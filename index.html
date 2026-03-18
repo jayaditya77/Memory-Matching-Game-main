@@ -5,25 +5,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memory Matching Game</title>
-    <link rel="shortcut icon" type="image/jpg" href="Images/fevicon.PNG"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="gameStyle.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"> </script>
-    <script src="gameScript.js"> </script>
 </head>
 <body>
-    <div id="ol"> </div>
-    <div style="height: 8px;"></div>
-    <div id="title">
+
+<canvas id="confetti-canvas"></canvas>
+<div id="combo-popup"></div>
+
+<!-- main overlay -->
+<div id="ol"></div>
+
+<!-- leaderboard overlay -->
+<div id="lb-overlay">
+    <div id="lb-box">
+        <h3>🏆 Leaderboard</h3>
+        <div class="lb-filters" id="lb-filters">
+            <button class="lb-filter active" onclick="filterLB('all')">All</button>
+            <button class="lb-filter" onclick="filterLB('3x4')">3×4</button>
+            <button class="lb-filter" onclick="filterLB('4x4')">4×4</button>
+            <button class="lb-filter" onclick="filterLB('4x5')">4×5</button>
+            <button class="lb-filter" onclick="filterLB('5x6')">5×6</button>
+            <button class="lb-filter" onclick="filterLB('6x6')">6×6</button>
+        </div>
+        <div id="lb-list"></div>
+        <button id="lb-close-btn" onclick="closeLB()">Close</button><br>
+        <button id="lb-clear-btn" onclick="clearLB()">Clear All</button>
+    </div>
+</div>
+
+<!-- title bars (identical to original) -->
+<div style="height:8px;"></div>
+<div id="title">
     <span id="logo">MEMORY MATCHING GAME</span>
-    </div>
+</div>
+<div id="title" style="height:40px;">
+    <span id="moves"></span>
+    <span id="time"></span>
+    <span id="score"></span>
+</div>
 
-    <div id="title" style="height: 40px;">
-        <span id="moves"></span>
-        <span id="time"></span>
-    </div>
+<!-- floating buttons -->
+<button id="mute-btn" onclick="toggleMute()">🔊 Mute</button>
+<button id="lb-btn"   onclick="showLB()">🏆 Board</button>
 
-    <center>
-        <table cellspacing="0"></table>
-    </center>
+<center><table cellspacing="0"></table></center>
+
+<script src="gameScript.js"></script>
 </body>
 </html>
